@@ -119,7 +119,7 @@ async function updatePodfile(
   }
 
   const isXcodebuildAvailable = await isInstalled('xcodebuild');
-  if (isXcodebuildAvailable) {
+  if (config.ios.shouldClean && isXcodebuildAvailable ) {
     await runCommand(
       'xcodebuild',
       ['-project', basename(`${config.ios.nativeXcodeProjDirAbs}`), 'clean'],

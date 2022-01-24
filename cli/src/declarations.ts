@@ -245,6 +245,14 @@ export interface CapacitorConfig {
      */
      appName?: string;
     
+     /**
+     * Specify whether the sync process should clean the build folder.
+     *
+     * @since 3.0.0
+     * @default true
+     */
+     shouldClean?: boolean;
+    
     /**
      * Specify a custom native project folder for the native iOS project.
      *

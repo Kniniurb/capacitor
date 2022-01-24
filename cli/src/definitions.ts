@@ -109,6 +109,7 @@ export interface IOSConfig extends PlatformConfig {
   readonly nativeXcodeProjDirAbs: string;
   readonly nativeXcodeWorkspaceDir: Promise<string>;
   readonly nativeXcodeWorkspaceDirAbs: Promise<string>;
+  readonly shouldClean: boolean;
 }
 
 export type WebConfig = PlatformConfig;

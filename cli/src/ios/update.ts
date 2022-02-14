@@ -118,19 +118,21 @@ async function updatePodfile(
     logger.warn('Skipping pod install because CocoaPods is not installed');
   }
 
-  const isXcodebuildAvailable = await isInstalled('xcodebuild');
-  if (config.ios.shouldClean && isXcodebuildAvailable ) {
-    await runCommand(
-      'xcodebuild',
-      ['-project', basename(`${config.ios.nativeXcodeProjDirAbs}`), 'clean'],
-      {
-        cwd: config.ios.nativeProjectDirAbs,
-      },
-    );
-  } else {
-    logger.warn(
-      'Unable to find "xcodebuild". Skipping xcodebuild clean step...',
-    );
+  if (config.ios.shouldClean) { 
+    const isXcodebuildAvailable = await isInstalled('xcodebuild');
+    if (isXcodebuildAvailable ) {
+      await runCommand(
+        'xcodebuild',
+        ['-project', basename(`${config.ios.nativeXcodeProjDirAbs}`), 'clean'],
+        {
+          cwd: config.ios.nativeProjectDirAbs,
+        },
+      );
+    } else {
+      logger.warn(
+        'Unable to find "xcodebuild". Skipping xcodebuild clean step...',
+      );
+    }
   }
 }
 

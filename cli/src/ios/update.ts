@@ -118,9 +118,9 @@ async function updatePodfile(
     logger.warn('Skipping pod install because CocoaPods is not installed');
   }
 
-  if (config.ios.shouldClean) { 
+  if (config.ios.shouldClean) {
     const isXcodebuildAvailable = await isInstalled('xcodebuild');
-    if (isXcodebuildAvailable ) {
+    if (isXcodebuildAvailable) {
       await runCommand(
         'xcodebuild',
         ['-project', basename(`${config.ios.nativeXcodeProjDirAbs}`), 'clean'],

@@ -284,9 +284,11 @@ async function loadIOSConfig(
   const nativeTargetDirAbs = resolve(platformDirAbs, nativeTargetDir);
   const nativeXcodeProjDir = `${nativeProjectDir}${sep}${appName}.xcodeproj`;
   const nativeXcodeProjDirAbs = resolve(platformDirAbs, nativeXcodeProjDir);
-  const nativeXcodeWorkspaceDirAbs = lazy(() => determineXcodeWorkspaceDirAbs(nativeProjectDirAbs, appName));
+  const nativeXcodeWorkspaceDirAbs = lazy(() =>
+    determineXcodeWorkspaceDirAbs(nativeProjectDirAbs, appName),
+  );
   const shouldClean = extConfig.ios?.shouldClean ?? true;
-  
+
   const webDirAbs = lazy(() =>
     determineIOSWebDirAbs(
       nativeProjectDirAbs,
@@ -317,7 +319,7 @@ async function loadIOSConfig(
     webDir: lazy(async () => relative(platformDirAbs, await webDirAbs)),
     webDirAbs,
     podPath,
-    shouldClean
+    shouldClean,
   };
 }
 

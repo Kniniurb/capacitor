@@ -105,7 +105,7 @@ export interface CapacitorConfig {
      * @since 3.0.0
      * @default app
      */
-     appDir?: string;
+    appDir?: string;
 
     /**
      * User agent of Capacitor Web View on Android.
